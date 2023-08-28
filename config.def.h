@@ -5,15 +5,23 @@ static int topbar = 1;                      /* -b  option; if 0, dmenu appears a
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const int user_bt = 5;               /* add an defined amount of pixels to the bar height */
 
+static char font[] = "JetBrains Mono:size=14";
 static const char *fonts[] = {
-	"JetBrains Mono:size=10"
+	font,
+	"monospace:pixelsize=10",
 };
-static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
-static const char *colors[SchemeLast][2] = {
+
+static char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
+
+static char normfgcolor[] = "#bbbbbb";
+static char normbgcolor[] = "#222222";
+static char selfgcolor[]  = "#eeeeee";
+static char selbgcolor[]  = "#005577";
+static char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "#bbbbbb", "#222222" },
-	[SchemeSel] = { "#eeeeee", "#005577" },
-	[SchemeOut] = { "#000000", "#00ffff" },
+	[SchemeNorm] = { normfgcolor, normbgcolor },
+	[SchemeSel]  = { selfgcolor,  selbgcolor  },
+	[SchemeOut]  = { "#000000",   "#00ffff" },
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines      = 0;
@@ -23,3 +31,14 @@ static unsigned int lines      = 0;
  * for example: " /?\"&[]"
  */
 static const char worddelimiters[] = " ";
+
+/*
+ * Xresources preferences to load at startup
+ */
+ResourcePref resources[] = {
+	{ "font",        STRING, &font },
+	{ "foreground",  STRING, &normfgcolor },
+	{ "black",  STRING, &normbgcolor },
+	{ "foreground",  STRING, &selfgcolor },
+	{ "color0",      STRING, &selbgcolor },
+};
