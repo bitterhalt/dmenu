@@ -43,7 +43,7 @@ static unsigned int border_width = 0;
 ResourcePref resources[] = {
 	{ "font",        STRING, &font },
 	{ "foreground",  STRING, &normfgcolor },
-	{ "black",  STRING, &normbgcolor },
-	{ "foreground",  STRING, &selfgcolor },
-	{ "color0",      STRING, &selbgcolor },
+	{ "background",  STRING, &normbgcolor },
+	{ "background",  STRING, &selfgcolor },
+	{ "color5",      STRING, &selbgcolor },
 };
